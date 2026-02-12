@@ -63,6 +63,7 @@ This project addresses these limitations using a **Hybrid CNN–BiLSTM architect
 ## 📊 Dataset
 
 - **Primary Dataset:** FaceForensics++
+- The dataset contains the following folders; DeepFakeDetection, Deepfakes, Face2Face, FaceShifter, FaceSwap, NeuralTextures, original, csv. Total 7010 files with 7000 mp4 videos (6000 deepfake, 1000 real) and 10 csv files
 - Dataset link: https://www.kaggle.com/datasets/xdxd003/ff-c23
 -  10 frames per video
 - Balanced Real/Fake classes
@@ -72,10 +73,10 @@ This project addresses these limitations using a **Hybrid CNN–BiLSTM architect
 
 ## 📈 Results
 
-- Validation Accuracy: ~52%
+- Validation Accuracy: ~82%
 - Limited by:
-  - Small dataset (~2000 samples)
-  - Only 30 training epochs
+  - Small dataset (~5000 samples)
+  - Using 40 training epochs
 
 ### Planned Metrics:
 - Accuracy

@@ -1,0 +1,9 @@
+dataset/
+dataset_clean/
+processed_frames/
+gradcam_results/
+X.npy
+y.npy
+weights/
+*.pth
+*.pt

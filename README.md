@@ -1,45 +1,37 @@
-# Deepfake Detection Project
+# 🎭 DeepFake Video Detection (Hybrid CNN–BiLSTM + Attention + Grad-CAM)
 
-## Project Structure
+A complete end-to-end DeepFake video detection system combining spatial and temporal learning with explainable AI and real-time web deployment.
 
-### Preprocessing Pipeline (Run in order)
-1. `model.py` - Extracts frames from videos → `processed_frames/`
-2. `face_crop_yolo.py` - Crops faces using YOLO → `dataset_clean/`
-3. `extract_features.py` - (Optional) Extract CNN features → `X.npy`, `y.npy`
+---
 
-### Training Scripts
+## 📌 Problem Statement
 
-#### ⭐ **RECOMMENDED: Hybrid Model with Attention**
-- **File**: `hybrid_improved.py`
-- **Approach**: End-to-end CNN-LSTM with attention mechanism
-- **Advantages**: Learns deepfake-specific features, handles class imbalance
-- **Usage**: `python hybrid_improved.py`
+DeepFake technology has evolved rapidly, posing serious risks to digital trust, misinformation control, and identity security.
 
-#### Alternative: LSTM on Pre-extracted Features
-- **File**: `train_lstm_improved.py`
-- **Approach**: LSTM on EfficientNet features
-- **Note**: Limited by feature quality (see data analysis)
-- **Usage**: `python train_lstm_improved.py`
+Most traditional detection methods rely on static CNN-based frame analysis. However, DeepFake videos contain **temporal inconsistencies** such as:
 
-### Utility Scripts
-- `analyze_data.py` - Analyze feature quality and class distribution
+- Unnatural facial motion
+- Irregular blinking patterns
+- Frame-to-frame artifacts
 
-## Current Issue
-- Pre-extracted EfficientNet features show minimal difference between real/fake
-- Solution: Use `hybrid_improved.py` for end-to-end learning
+This project addresses these limitations using a **Hybrid CNN–BiLSTM architecture with Attention**, combined with **Grad-CAM explainability**, and deployed through a **Streamlit web interface**.
 
-## Dataset Stats
-- Total videos: 5,949
-- Real: 992 (16.7%)
-- Fake: 4,957 (83.3%)
-- Imbalance ratio: 1:5
+---
 
-## Files to Clean Up
-Old training scripts (superseded by improved versions):
-- `train_lstm.py` → use `train_lstm_improved.py` instead
-- `finetune_cnn.py` → similar to old LSTM approach
-- `hybrid_cnn_lstm.py` → use `hybrid_improved.py` instead
+## 🏗️ System Architecture
 
-Possible duplicate data files:
-- Check if `X_features.npy` == `X.npy`
-- Check if `y_labels.npy` == `y.npy`
+### 🔹 Overall Pipeline
+
+1. **Video Upload**
+2. Frame Extraction (10 evenly spaced frames)
+3. Face Detection using YOLOv8
+4. Feature Extraction using EfficientNet-B0
+5. Temporal Modeling with Bi-LSTM
+6. Multi-Head Attention
+7. Final Classification (Real / Fake)
+8. Grad-CAM Visualization
+9. Web-Based Prediction Output
+
+---
+
+## 📂 Project Structure
